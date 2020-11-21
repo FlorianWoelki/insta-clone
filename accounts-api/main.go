@@ -1,6 +1,7 @@
 package main
 
 import (
+	"./handlers"
 	"context"
 	"github.com/gorilla/mux"
 	"log"
@@ -17,6 +18,13 @@ func main() {
 
 	// create gorilla mux router
 	router := mux.NewRouter()
+
+	// create handlers
+	accountsHandler := handlers.NewAccounts(logger)
+
+	// handlers for API
+	getAccounts := router.Methods(http.MethodGet).Subrouter()
+	getAccounts.HandleFunc("/user/{id:[0-9]+}", accountsHandler.ListSingle)
 
 	// create a new server
 	server := http.Server{
