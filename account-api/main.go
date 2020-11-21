@@ -1,14 +1,15 @@
 package main
 
 import (
-	"./handlers"
 	"context"
-	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"time"
+
+	"github.com/florianwoelki/insta-clone/account-api/handlers"
+	"github.com/gorilla/mux"
 )
 
 var address = ":9090"
