@@ -1,4 +1,4 @@
-module github.com/florianwoelki/insta-clone/account-api
+module github.com/florianwoelki/insta-clone
 
 go 1.15
 
