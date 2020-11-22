@@ -18,6 +18,7 @@ var address = ":9090"
 func main() {
 	logger := log.New(os.Stdout, "accounts-api ", log.LstdFlags)
 
+	// create connection to postgres database
 	database := internal.NewDatabase(logger).CreateConnection()
 	defer database.Close()
 
