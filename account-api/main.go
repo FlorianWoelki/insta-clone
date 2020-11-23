@@ -19,10 +19,8 @@ func main() {
 	logger := log.New(os.Stdout, "accounts-api ", log.LstdFlags)
 
 	// create connection to postgres database
-	db := internal.NewDatabase(logger)
-	sqlDb := db.CreateConnection()
-	db.CreateTables()
-	defer sqlDb.Close()
+	database := internal.NewDatabase(logger).CreateConnection()
+	defer database.Close()
 
 	// create gorilla mux router
 	router := mux.NewRouter()
