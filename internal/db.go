@@ -12,12 +12,11 @@ import (
 // Database for creating connection and handling transaction to the database
 type Database struct {
 	logger *log.Logger
-	db     *gorm.DB
 }
 
 // NewDatabase returns a new database connection with the given logger
 func NewDatabase(logger *log.Logger) *Database {
-	return &Database{logger, nil}
+	return &Database{logger}
 }
 
 // TODO: refactor to env variables
@@ -38,14 +37,16 @@ func (d *Database) CreateConnection() *sql.DB {
 		os.Exit(1)
 	}
 
-	d.db = db
+	err = createTables(db)
+	if err != nil {
+		d.logger.Printf("Something went wrong while creating tables: %s\n", err)
+		os.Exit(1)
+	}
 	d.logger.Println("Successfully connected to postgres database")
 	return database
 }
 
 // CreateTables creates all tables that are constructed in the types
-func (d *Database) CreateTables() {
-	if d.db != nil {
-		d.db.AutoMigrate(&User{})
-	}
+func createTables(db *gorm.DB) error {
+	return db.AutoMigrate(&User{})
 }
