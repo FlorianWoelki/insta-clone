@@ -30,7 +30,7 @@ func main() {
 
 	// handlers for API
 	getAccounts := router.Methods(http.MethodGet).Subrouter()
-	getAccounts.HandleFunc("/user/{id:[0-9]+}", accountsHandler.ListSingle)
+	getAccounts.HandleFunc("/account/{id:[0-9]+}", accountsHandler.ListSingle)
 
 	// create a new server
 	server := http.Server{

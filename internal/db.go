@@ -48,5 +48,5 @@ func (d *Database) CreateConnection() *sql.DB {
 
 // CreateTables creates all tables that are constructed in the types
 func createTables(db *gorm.DB) error {
-	return db.AutoMigrate(&User{})
+	return db.AutoMigrate(&Account{})
 }

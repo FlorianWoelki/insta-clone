@@ -7,7 +7,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// ListSingle handles get requests and returns single user by id
+// ListSingle handles get requests and returns single account by id
 func (a *Accounts) ListSingle(rw http.ResponseWriter, r *http.Request) {
 	// TODO: get single account from database
 	params := mux.Vars(r)
