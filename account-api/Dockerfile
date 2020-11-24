@@ -1,13 +1,22 @@
-FROM golang:1.15.5-alpine3.12
+FROM golang:1.15.5-alpine3.12 as builder
 
-COPY ./internal /go/src/github.com/florianwoelki/insta-clone/account-api
+ADD . /go/src/github.com/florianwoelki/insta-clone/
 
 WORKDIR /go/src/github.com/florianwoelki/insta-clone/account-api
+
+COPY go.mod .
+COPY go.sum .
+
+RUN go mod download
 COPY . .
 
-RUN go get -d -v ./...
-RUN go install -v ./...
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o /account-api .
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+FROM alpine
 
-CMD [ "account-api" ]
+RUN apk update \
+  && apk add --no-cache
+
+COPY --from=builder /account-api ./
+RUN chmod +x ./account-api
+CMD [ "./account-api" ]
