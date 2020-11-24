@@ -2,6 +2,7 @@ package internal
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"os"
 
@@ -19,12 +20,17 @@ func NewDatabase(logger *log.Logger) *Database {
 	return &Database{logger}
 }
 
-// TODO: refactor to env variables
-var dsn string = "user=postgres password=postgres dbname=insta-clone port=5432 sslmode=disable"
-
 // CreateConnection creates a connection to the postgres database
 // It is not closing the connection to the database
 func (d *Database) CreateConnection() *sql.DB {
+	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=disable",
+		os.Getenv("DB_HOST"),
+		os.Getenv("DB_USERNAME"),
+		os.Getenv("DB_PASSWORD"),
+		os.Getenv("DB_DATABASE"),
+		os.Getenv("DB_PORT"),
+	)
+
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		d.logger.Printf("Error connecting to database: %s\n", err)

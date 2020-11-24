@@ -11,11 +11,14 @@ import (
 	"github.com/florianwoelki/insta-clone/account-api/handlers"
 	"github.com/florianwoelki/insta-clone/internal"
 	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 )
 
 var address = ":9090"
 
 func main() {
+	godotenv.Load(".env")
+
 	logger := log.New(os.Stdout, "accounts-api ", log.LstdFlags)
 
 	// create connection to postgres database
