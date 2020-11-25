@@ -4,6 +4,9 @@ import (
 	"log"
 )
 
+// KeyAccount for serialization/deserialization
+type KeyAccount struct{}
+
 // Accounts handler for getting, creating and updating accounts
 type Accounts struct {
 	logger *log.Logger
