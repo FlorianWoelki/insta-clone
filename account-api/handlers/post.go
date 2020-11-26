@@ -9,16 +9,9 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-var jwtKey = []byte("secret_key") // TODO: refactor to env variable
-
 type credentials struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
-}
-
-type claims struct {
-	Email string `json:"email"`
-	jwt.StandardClaims
 }
 
 // Login lets the user login with a valid json structure defined in the credentials struct
@@ -51,7 +44,7 @@ func (a *Accounts) Login(rw http.ResponseWriter, r *http.Request) {
 
 	// define jwt information
 	expirationTime := time.Now().Add(5 * time.Minute)
-	claims := &claims{
+	claims := &internal.Claims{
 		Email: creds.Email,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
@@ -60,7 +53,7 @@ func (a *Accounts) Login(rw http.ResponseWriter, r *http.Request) {
 
 	// create jwt
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	tokenString, err := token.SignedString(jwtKey)
+	tokenString, err := token.SignedString(internal.JWTKey)
 	if err != nil {
 		a.logger.Printf("[ERROR] Token creation has failed, error: %v", err)
 		http.Error(rw, "Something went wrong internally", http.StatusInternalServerError)
@@ -91,11 +84,11 @@ func (a *Accounts) Refresh(rw http.ResponseWriter, r *http.Request) {
 	}
 
 	tokenStr := c.Value
-	claims := &claims{}
+	claims := &internal.Claims{}
 
 	// parse jwt string and store the result in claims
 	token, err := jwt.ParseWithClaims(tokenStr, claims, func(token *jwt.Token) (interface{}, error) {
-		return jwtKey, nil
+		return internal.JWTKey, nil
 	})
 
 	if err != nil {
@@ -128,7 +121,7 @@ func (a *Accounts) Refresh(rw http.ResponseWriter, r *http.Request) {
 	expirationTime := time.Now().Add(5 * time.Minute)
 	claims.ExpiresAt = expirationTime.Unix()
 	token = jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	tokenStr, err = token.SignedString(jwtKey)
+	tokenStr, err = token.SignedString(internal.JWTKey)
 	if err != nil {
 		a.logger.Printf("[ERROR] Token creation has failed, error: %v", err)
 		http.Error(rw, "Something went wrong internally", http.StatusInternalServerError)
