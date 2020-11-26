@@ -36,7 +36,6 @@ func (a *Accounts) Login(rw http.ResponseWriter, r *http.Request) {
 	var account internal.Account
 	if err := a.db.Where("email = ?", creds.Email).First(&account).Error; err != nil {
 		a.logger.Printf("[ERROR] Couldn't find any email %s, error: %v", creds.Email, err)
-
 		http.Error(rw, "Couldn't login the user, wrong email", http.StatusNotFound)
 		return
 	}
@@ -46,7 +45,6 @@ func (a *Accounts) Login(rw http.ResponseWriter, r *http.Request) {
 
 	if passErr == bcrypt.ErrMismatchedHashAndPassword && passErr != nil {
 		a.logger.Printf("[ERROR] Wrong password, error: %v", passErr)
-
 		http.Error(rw, "Entered wrong password", http.StatusForbidden)
 		return
 	}
@@ -65,7 +63,6 @@ func (a *Accounts) Login(rw http.ResponseWriter, r *http.Request) {
 	tokenString, err := token.SignedString(jwtKey)
 	if err != nil {
 		a.logger.Printf("[ERROR] Token creation has failed, error: %v", err)
-
 		http.Error(rw, "Something went wrong internally", http.StatusInternalServerError)
 		return
 	}
@@ -74,6 +71,74 @@ func (a *Accounts) Login(rw http.ResponseWriter, r *http.Request) {
 	http.SetCookie(rw, &http.Cookie{
 		Name:    "token",
 		Value:   tokenString,
+		Expires: expirationTime,
+	})
+}
+
+// Refresh allows the user to get a new refreshed token
+func (a *Accounts) Refresh(rw http.ResponseWriter, r *http.Request) {
+	c, err := r.Cookie("token")
+	if err != nil {
+		if err == http.ErrNoCookie {
+			a.logger.Printf("[ERROR] Couldn't find any token cookie, error: %v", err)
+			http.Error(rw, "Not authorized", http.StatusUnauthorized)
+			return
+		}
+
+		a.logger.Printf("[ERROR] Something went wrong while getting the token cookie, error: %v", err)
+		http.Error(rw, "Something went wrong internally", http.StatusBadRequest)
+		return
+	}
+
+	tokenStr := c.Value
+	claims := &claims{}
+
+	// parse jwt string and store the result in claims
+	token, err := jwt.ParseWithClaims(tokenStr, claims, func(token *jwt.Token) (interface{}, error) {
+		return jwtKey, nil
+	})
+
+	if err != nil {
+		if err == jwt.ErrSignatureInvalid {
+			a.logger.Printf("[ERROR] Invalid token, error: %v", err)
+			http.Error(rw, "Invalid token", http.StatusUnauthorized)
+			return
+		}
+
+		a.logger.Printf("[ERROR] Something went wrong while validating the token cookie, error: %v", err)
+		http.Error(rw, "Something went wrong internally", http.StatusBadRequest)
+		return
+	}
+
+	// check if token is invalid
+	if !token.Valid {
+		a.logger.Println("[ERROR] Invalid token")
+		http.Error(rw, "Invalid token", http.StatusUnauthorized)
+		return
+	}
+
+	// check if time in token has elapsed
+	if time.Unix(claims.ExpiresAt, 0).Sub(time.Now()) > 30*time.Second {
+		a.logger.Println("[ERROR] Time for token has elapsed")
+		http.Error(rw, "Time for token has elapsed", http.StatusBadRequest)
+		return
+	}
+
+	// create a new token for the current use
+	expirationTime := time.Now().Add(5 * time.Minute)
+	claims.ExpiresAt = expirationTime.Unix()
+	token = jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	tokenStr, err = token.SignedString(jwtKey)
+	if err != nil {
+		a.logger.Printf("[ERROR] Token creation has failed, error: %v", err)
+		http.Error(rw, "Something went wrong internally", http.StatusInternalServerError)
+		return
+	}
+
+	// set the new token as the users token cookie
+	http.SetCookie(rw, &http.Cookie{
+		Name:    "token",
+		Value:   tokenStr,
 		Expires: expirationTime,
 	})
 }

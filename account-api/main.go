@@ -37,6 +37,7 @@ func main() {
 
 	postAccounts := router.Methods(http.MethodPost).Subrouter()
 	postAccounts.HandleFunc("/login", accountsHandler.Login)
+	postAccounts.HandleFunc("/refreshToken", accountsHandler.Refresh)
 
 	// create a new server
 	server := http.Server{
