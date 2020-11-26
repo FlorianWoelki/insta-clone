@@ -17,23 +17,26 @@ import (
 var address = ":9090"
 
 func main() {
-	godotenv.Load(".env")
+	godotenv.Load("../.env") // TODO: change path for docker env
 
 	logger := log.New(os.Stdout, "accounts-api ", log.LstdFlags)
 
 	// create connection to postgres database
-	database := internal.NewDatabase(logger).CreateConnection()
+	database, gormInstance := internal.NewDatabase(logger).CreateConnection()
 	defer database.Close()
 
 	// create gorilla mux router
 	router := mux.NewRouter()
 
 	// create handlers
-	accountsHandler := handlers.NewAccounts(logger)
+	accountsHandler := handlers.NewAccounts(logger, gormInstance)
 
 	// handlers for API
 	getAccounts := router.Methods(http.MethodGet).Subrouter()
 	getAccounts.HandleFunc("/account/{id:[0-9]+}", accountsHandler.ListSingle)
+
+	postAccounts := router.Methods(http.MethodPost).Subrouter()
+	postAccounts.HandleFunc("/login", accountsHandler.Login)
 
 	// create a new server
 	server := http.Server{
