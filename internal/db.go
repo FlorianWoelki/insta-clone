@@ -22,7 +22,7 @@ func NewDatabase(logger *log.Logger) *Database {
 
 // CreateConnection creates a connection to the postgres database
 // It is not closing the connection to the database
-func (d *Database) CreateConnection() *sql.DB {
+func (d *Database) CreateConnection() (*sql.DB, *gorm.DB) {
 	dsn := fmt.Sprintf("host=%v user=%v password=%v dbname=%v port=%v sslmode=disable",
 		os.Getenv("DB_HOST"),
 		os.Getenv("DB_USERNAME"),
@@ -31,25 +31,25 @@ func (d *Database) CreateConnection() *sql.DB {
 		os.Getenv("DB_PORT"),
 	)
 
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	gormInstance, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		d.logger.Printf("Error connecting to database: %s\n", err)
 		os.Exit(1)
 	}
 
-	database, err := db.DB()
+	database, err := gormInstance.DB()
 	if err != nil {
 		d.logger.Printf("Error connecting to database: %s\n", err)
 		os.Exit(1)
 	}
 
-	err = createTables(db)
+	err = createTables(gormInstance)
 	if err != nil {
 		d.logger.Printf("Something went wrong while creating tables: %s\n", err)
 		os.Exit(1)
 	}
 	d.logger.Println("Successfully connected to postgres database")
-	return database
+	return database, gormInstance
 }
 
 // CreateTables creates all tables that are constructed in the types

@@ -12,6 +12,7 @@ type Account struct {
 	ID          uint         `json:"id"`
 	Name        string       `json:"name" validate:"required"`
 	Email       *string      `json:"email" validate:"required"`
+	Password    string       `json:"-"`
 	Username    string       `json:"username" validate:"required"`
 	Age         uint8        `json:"age" validate:"required"`
 	Birthday    *time.Time   `json:"birthday" validate:"required"`
