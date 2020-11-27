@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"github.com/dgrijalva/jwt-go"
@@ -23,7 +24,16 @@ func (a *Accounts) MiddlewareValidateAccount(next http.Handler) http.Handler {
 			return
 		}
 
-		ctx := context.WithValue(r.Context(), &KeyAccount{}, account)
+		// try to validate the input account
+		errs := a.validator.Validate(account)
+		if len(errs) != 0 {
+			a.logger.Printf("[ERROR] Validating account: %v", errs)
+			http.Error(rw, fmt.Sprintf("Error validating account %v", errs), http.StatusUnprocessableEntity)
+			return
+		}
+
+		// add account to context
+		ctx := context.WithValue(r.Context(), KeyAccount{}, account)
 		r = r.WithContext(ctx)
 
 		next.ServeHTTP(rw, r)

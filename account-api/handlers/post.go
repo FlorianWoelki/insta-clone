@@ -14,6 +14,13 @@ type credentials struct {
 	Password string `json:"password"`
 }
 
+// Register a account with a valid json structure
+func (a *Accounts) Register(rw http.ResponseWriter, r *http.Request) {
+	account := r.Context().Value(KeyAccount{}).(*internal.Account)
+
+	a.logger.Printf("registered account %s, %s, %s", *account.Email, account.Username, account.Name)
+}
+
 // Login lets the user login with a valid json structure defined in the credentials struct
 func (a *Accounts) Login(rw http.ResponseWriter, r *http.Request) {
 	rw.Header().Add("Content-Type", "application/json")
