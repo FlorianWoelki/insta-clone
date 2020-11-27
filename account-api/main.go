@@ -15,9 +15,14 @@ import (
 )
 
 var address = ":9090"
+var env string
 
 func main() {
-	godotenv.Load("../.env") // TODO: change path for docker env
+	if env == "docker" {
+		godotenv.Load(".env")
+	} else {
+		godotenv.Load("../.env")
+	}
 
 	logger := log.New(os.Stdout, "accounts-api ", log.LstdFlags)
 	validator := internal.NewValidation()

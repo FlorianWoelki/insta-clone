@@ -10,7 +10,7 @@ COPY go.sum .
 RUN go mod download
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o /account-api .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o /account-api . -ldflags "-X main.env=docker"
 
 FROM alpine
 
