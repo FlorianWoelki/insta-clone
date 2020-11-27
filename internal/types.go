@@ -14,7 +14,7 @@ type Account struct {
 	Email       *string      `json:"email" validate:"required"`
 	Password    string       `json:"-"`
 	Username    string       `json:"username" validate:"required"`
-	Age         uint8        `json:"age" validate:"required"`
+	Age         uint8        `json:"age"`
 	Birthday    *time.Time   `json:"birthday" validate:"required"`
 	ActivatedAt sql.NullTime `json:"-"`
 	CreatedAt   time.Time    `json:"-"`
