@@ -20,6 +20,7 @@ func main() {
 	godotenv.Load("../.env") // TODO: change path for docker env
 
 	logger := log.New(os.Stdout, "accounts-api ", log.LstdFlags)
+	validator := internal.NewValidation()
 
 	// create connection to postgres database
 	database, gormInstance := internal.NewDatabase(logger).CreateConnection()
@@ -29,7 +30,7 @@ func main() {
 	router := mux.NewRouter()
 
 	// create handlers
-	accountsHandler := handlers.NewAccounts(logger, gormInstance)
+	accountsHandler := handlers.NewAccounts(logger, gormInstance, validator)
 
 	// handlers for API
 	getAccounts := router.Methods(http.MethodGet).Subrouter()
@@ -38,6 +39,10 @@ func main() {
 	postAccounts := router.Methods(http.MethodPost).Subrouter()
 	postAccounts.HandleFunc("/login", accountsHandler.Login)
 	postAccounts.HandleFunc("/refreshToken", accountsHandler.Refresh)
+
+	registerAccounts := router.Methods(http.MethodPost).Subrouter()
+	registerAccounts.HandleFunc("/register", accountsHandler.Register)
+	registerAccounts.Use(accountsHandler.MiddlewareValidateAccount)
 
 	// create a new server
 	server := http.Server{
