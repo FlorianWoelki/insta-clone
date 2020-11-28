@@ -1,13 +1,68 @@
 basePath: /
 consumes:
 - application/json
+definitions:
+  Account:
+    description: Account is the database struct
+    properties:
+      age:
+        format: uint8
+        type: integer
+        x-go-name: Age
+      birthday:
+        format: date-time
+        type: string
+        x-go-name: Birthday
+      email:
+        type: string
+        x-go-name: Email
+      id:
+        description: the id for this user
+        format: uint64
+        minimum: 1
+        type: integer
+        x-go-name: ID
+      name:
+        type: string
+        x-go-name: Name
+      username:
+        type: string
+        x-go-name: Username
+    required:
+    - id
+    type: object
+    x-go-package: github.com/florianwoelki/insta-clone/internal
 info:
   description: Documentation for Account API
   title: of Account API
   version: 1.0.0
-paths: {}
+paths:
+  /account/{id}:
+    get:
+      description: Returns a single account by a id
+      operationId: listAccount
+      responses:
+        "200":
+          $ref: '#/responses/accountResponse'
+      tags:
+      - accounts
 produces:
 - application/json
+responses:
+  accountResponse:
+    description: A single account response
+    headers:
+      id:
+        description: |-
+          The id of the account that will be returned
+          in: path
+          required: true
+        format: uint64
+        type: integer
+    schema:
+      items:
+        $ref: '#/definitions/Account'
+      type: array
 schemes:
 - http
 swagger: "2.0"

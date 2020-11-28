@@ -8,7 +8,11 @@ import (
 )
 
 // Account is the database struct
+// swagger:model
 type Account struct {
+	// the id for this user
+	// required: true
+	// min: 1
 	ID          uint         `json:"id"`
 	Name        string       `json:"name" validate:"required"`
 	Email       *string      `json:"email" validate:"required"`

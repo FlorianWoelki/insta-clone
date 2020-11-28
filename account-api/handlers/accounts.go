@@ -21,6 +21,18 @@ import (
 	"gorm.io/gorm"
 )
 
+// A single account response
+// swagger:response accountResponse
+type accountResponse struct {
+	// The id of the account that will be returned
+	// in: path
+	// required: true
+	ID uint `json:"id"`
+	// Returned account in the system
+	// in: body
+	Body []internal.Account
+}
+
 // KeyAccount for serialization/deserialization
 type KeyAccount struct{}
 
