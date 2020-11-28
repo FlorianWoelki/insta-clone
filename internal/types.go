@@ -10,15 +10,32 @@ import (
 // Account is the database struct
 // swagger:model
 type Account struct {
-	// the id for this user
+	// the id for this account
 	// required: true
 	// min: 1
-	ID          uint         `json:"id"`
-	Name        string       `json:"name" validate:"required"`
-	Email       *string      `json:"email" validate:"required"`
-	Password    string       `json:"-"`
-	Username    string       `json:"username" validate:"required"`
-	Age         uint8        `json:"age"`
+	ID uint `json:"id"`
+
+	// the name of this account
+	// required: true
+	Name string `json:"name" validate:"required"`
+
+	// the email of this account
+	// required: true
+	Email *string `json:"email" validate:"required"`
+
+	// the password for this account
+	// required: true
+	Password string `json:"-" validate:"required"`
+
+	// the username of this account
+	// required: true
+	Username string `json:"username" validate:"required"`
+
+	// the age of this account
+	Age uint8 `json:"age"`
+
+	// the birthday of this account
+	// required: true
 	Birthday    *time.Time   `json:"birthday" validate:"required"`
 	ActivatedAt sql.NullTime `json:"-"`
 	CreatedAt   time.Time    `json:"-"`

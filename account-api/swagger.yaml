@@ -6,30 +6,39 @@ definitions:
     description: Account is the database struct
     properties:
       age:
+        description: the age of this account
         format: uint8
         type: integer
         x-go-name: Age
       birthday:
+        description: the birthday of this account
         format: date-time
         type: string
         x-go-name: Birthday
       email:
+        description: the email of this account
         type: string
         x-go-name: Email
       id:
-        description: the id for this user
+        description: the id for this account
         format: uint64
         minimum: 1
         type: integer
         x-go-name: ID
       name:
+        description: the name of this account
         type: string
         x-go-name: Name
       username:
+        description: the username of this account
         type: string
         x-go-name: Username
     required:
     - id
+    - name
+    - email
+    - username
+    - birthday
     type: object
     x-go-package: github.com/florianwoelki/insta-clone/internal
 info:
