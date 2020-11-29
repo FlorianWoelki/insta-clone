@@ -32,8 +32,9 @@ func main() {
 	database, gormInstance := internal.NewDatabase(logger).CreateConnection()
 	defer database.Close()
 
-	// create gorilla mux router
+	// create gorilla mux router with CORS
 	router := mux.NewRouter()
+	router.Use(internal.CORS)
 
 	// create handlers
 	accountsHandler := handlers.NewAccounts(logger, gormInstance, validator)
