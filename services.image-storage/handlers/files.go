@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/florianwoelki/insta-clone/services.images-service/files"
+	"github.com/florianwoelki/insta-clone/services.image-storage/files"
 	"github.com/gorilla/mux"
 )
 

@@ -8,8 +8,8 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/florianwoelki/insta-clone/services.images-service/files"
-	"github.com/florianwoelki/insta-clone/services.images-service/handlers"
+	"github.com/florianwoelki/insta-clone/services.image-storage/files"
+	"github.com/florianwoelki/insta-clone/services.image-storage/handlers"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 )
@@ -25,7 +25,7 @@ func main() {
 		godotenv.Load("../.env")
 	}
 
-	logger := log.New(os.Stdout, "images-service", log.LstdFlags)
+	logger := log.New(os.Stdout, "image-storage", log.LstdFlags)
 
 	// create the storage class, use local storage
 	// max filesize 5MB
