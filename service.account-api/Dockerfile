@@ -2,7 +2,7 @@ FROM golang:1.15.5-alpine3.12 as builder
 
 ADD . /go/src/github.com/florianwoelki/insta-clone/
 
-WORKDIR /go/src/github.com/florianwoelki/insta-clone/account-api
+WORKDIR /go/src/github.com/florianwoelki/insta-clone/service.account-api
 
 COPY go.mod .
 COPY go.sum .

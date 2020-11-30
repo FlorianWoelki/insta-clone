@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/florianwoelki/insta-clone/internal"
-	"github.com/florianwoelki/insta-clone/services.account-api/handlers"
+	"github.com/florianwoelki/insta-clone/service.account-api/handlers"
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"

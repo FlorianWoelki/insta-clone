@@ -13,7 +13,7 @@ services:
   account-api:
     build:
       context: .
-      dockerfile: ./account-api/Dockerfile
+      dockerfile: ./service.account-api/Dockerfile
     env_file: .env
     environment: 
       DB_HOST: database

@@ -8,8 +8,8 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/florianwoelki/insta-clone/services.image-storage/files"
-	"github.com/florianwoelki/insta-clone/services.image-storage/handlers"
+	"github.com/florianwoelki/insta-clone/service.image-storage/files"
+	"github.com/florianwoelki/insta-clone/service.image-storage/handlers"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 )
