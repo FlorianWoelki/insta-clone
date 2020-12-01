@@ -9,11 +9,13 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Files struct represents a Files handler
 type Files struct {
 	logger  *log.Logger
 	storage files.Storage
 }
 
+// NewFiles creates a new Files handler
 func NewFiles(storage files.Storage, logger *log.Logger) *Files {
 	return &Files{logger: logger, storage: storage}
 }
@@ -41,6 +43,7 @@ func (f *Files) invalidURI(uri string, rw http.ResponseWriter) {
 func (f *Files) saveFile(id, path string, rw http.ResponseWriter, r *http.Request) {
 	f.logger.Println("Save file for product", "id", id, "path", path)
 
+	// try to save file
 	filepath := filepath.Join(id, path)
 	err := f.storage.Save(filepath, r.Body)
 	if err != nil {
