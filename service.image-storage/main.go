@@ -42,7 +42,8 @@ func main() {
 	router := mux.NewRouter()
 
 	postHandler := router.Methods(http.MethodPost).Subrouter()
-	postHandler.HandleFunc("/images/{id:[0-9]+}/{filename:[a-zA-Z]+\\.[a-z]{3}}", fileHandler.ServeHTTP)
+	postHandler.HandleFunc("/images/{id:[0-9]+}/{filename:[a-zA-Z]+\\.[a-z]{3}}", fileHandler.UploadRest)
+	postHandler.HandleFunc("/", fileHandler.UploadMultipart)
 
 	// get files
 	getHandler := router.Methods(http.MethodGet).Subrouter()

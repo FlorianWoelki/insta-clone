@@ -20,7 +20,8 @@ func NewFiles(storage files.Storage, logger *log.Logger) *Files {
 	return &Files{logger: logger, storage: storage}
 }
 
-func (f *Files) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
+// UploadRest implements the http.Handler interface
+func (f *Files) UploadRest(rw http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
 	filename := vars["filename"]
@@ -33,6 +34,18 @@ func (f *Files) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	}
 
 	f.saveFile(id, filename, rw, r)
+}
+
+func (f *Files) UploadMultipart(rw http.ResponseWriter, r *http.Request) {
+	err := r.ParseMultipartForm(128 * 1024)
+	if err != nil {
+		f.logger.Printf("Something went wrong while parsing multipart form %v", err)
+		http.Error(rw, "Expected multipart form data", http.StatusBadRequest)
+		return
+	}
+
+	id := r.FormValue("id")
+	f.logger.Println("Process form for id", id)
 }
 
 func (f *Files) invalidURI(uri string, rw http.ResponseWriter) {
