@@ -10,6 +10,7 @@ import (
 
 	"github.com/florianwoelki/insta-clone/service.image-storage/files"
 	"github.com/florianwoelki/insta-clone/service.image-storage/handlers"
+	gohandlers "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 )
@@ -41,6 +42,8 @@ func main() {
 	// create gorilla mux router with CORS
 	router := mux.NewRouter()
 
+	corsHandler := gohandlers.CORS(gohandlers.AllowedOrigins([]string{"*"}))
+
 	postHandler := router.Methods(http.MethodPost).Subrouter()
 	postHandler.HandleFunc("/images/{id:[0-9]+}/{filename:[a-zA-Z]+\\.[a-z]{3}}", fileHandler.UploadRest)
 	postHandler.HandleFunc("/", fileHandler.UploadMultipart)
@@ -52,7 +55,7 @@ func main() {
 	// create a new server
 	server := http.Server{
 		Addr:         address,
-		Handler:      router,
+		Handler:      corsHandler(router),
 		ErrorLog:     logger,
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
