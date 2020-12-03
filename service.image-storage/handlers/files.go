@@ -38,7 +38,10 @@ func (f *Files) UploadRest(rw http.ResponseWriter, r *http.Request) {
 	f.saveFile(id, filename, rw, r.Body)
 }
 
+// UploadMultipart implements the http.Handler interface and acts for uploading
+// multipart files
 func (f *Files) UploadMultipart(rw http.ResponseWriter, r *http.Request) {
+	// define size of file and parse multipart form
 	err := r.ParseMultipartForm(128 * 1024)
 	if err != nil {
 		f.logger.Printf("Something went wrong while parsing multipart form %v", err)
@@ -46,6 +49,7 @@ func (f *Files) UploadMultipart(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// try to parse id
 	id, idErr := strconv.Atoi(r.FormValue("id"))
 	f.logger.Println("Process form for id", id)
 	if idErr != nil {
@@ -54,6 +58,7 @@ func (f *Files) UploadMultipart(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// create the file for multipart form
 	file, fileHeader, err := r.FormFile("file")
 	if err != nil {
 		f.logger.Printf("Expected file for mulitpart uploading, %v", err)
