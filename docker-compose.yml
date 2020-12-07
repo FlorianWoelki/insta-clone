@@ -23,6 +23,13 @@ services:
       - database
     links:
       - database
+  image-storage:
+    build:
+      context: .
+      dockerfile: ./server.image-storage/Dockerfile
+    env_file: .env
+    ports:
+      - "9090:9091"
 
 volumes:
   data:
