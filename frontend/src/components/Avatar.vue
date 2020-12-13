@@ -1,9 +1,9 @@
 <template>
   <div class="flex items-center justify-center">
     <div
-      class="inline-block p-1 rounded-full bg-gradient-to-tr"
+      class="inline-block p-0.5 rounded-full bg-gradient-to-tr from-yellow-400 to-pink-600"
       :class="
-        noActiveStories ? 'bg-gray-300' : 'from-yellow-400 to-pink-600'
+        noActiveStories ? '' : ''
       "
     >
       <a class="relative block p-1 bg-white rounded-full" href="#">
