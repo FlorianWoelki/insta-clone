@@ -8,7 +8,7 @@
     >
       <a class="relative block p-1 bg-white rounded-full" href="#">
         <img
-          class="w-16 h-16 rounded-full"
+          :class="`w-${imageSize} h-${imageSize} rounded-full`"
           src="https://placekitten.com/200/200"
           alt="pb-avatar"
         >
@@ -24,6 +24,10 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   props: {
     noActiveStories: Boolean,
+    imageSize: {
+      type: Number,
+      default: 16,
+    },
   },
 });
 </script>

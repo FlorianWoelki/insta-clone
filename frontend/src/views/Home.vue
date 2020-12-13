@@ -132,7 +132,27 @@
       <!-- FEED SECTION -->
       <div class="mt-10">
         <h1 class="text-3xl font-bold text-gray-800">Feed</h1>
-        <div></div>
+        <div class="grid grid-cols-3 gap-6 mt-6">
+          <div class="space-y-2">
+            <img class="rounded-2xl" src="https://placekitten.com/300/300" alt="feed-image">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <Avatar :imageSize="6" />
+                <p class="text-sm font-bold text-gray-800">Dom_Hill</p>
+              </div>
+              <div class="flex items-center space-x-3 text-gray-700">
+                <div class="flex items-center space-x-1">
+                  <Icon name="heart" class="w-5 h-5" />
+                  <span>5.2k</span>
+                </div>
+                <div class="flex items-center space-x-1">
+                  <Icon name="chat" class="w-5 h-5" />
+                  <span>38</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
