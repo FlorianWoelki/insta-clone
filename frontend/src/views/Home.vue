@@ -74,8 +74,38 @@
         </div>
       </div>
     </div>
-    <div class="col-span-3">
-      <h1>test</h1>
+
+    <div class="container max-w-3xl col-span-3 mx-auto my-12">
+      <div class="flex items-center justify-between">
+        <!-- SEARCH INPUT FIELD -->
+        <div class="flex items-center w-56 p-2 space-x-2 rounded-lg bg-gray-50">
+          <Icon name="search" class="w-6 h-6 my-auto text-gray-300" />
+          <input
+            placeholder="Search"
+            type="text"
+            class="w-full pr-2 text-sm text-gray-700 placeholder-gray-300 bg-gray-50 focus:outline-none"
+          >
+        </div>
+
+        <!-- HEADER RIGHT SECTION -->
+        <div class="flex items-center space-x-6">
+          <div class="relative text-gray-700">
+            <Icon name="bell" class="w-6 h-6" />
+            <div class="absolute top-0 right-0 w-1 h-1 -mt-1 -mr-1 bg-red-600 rounded-full" />
+          </div>
+          <div class="relative text-gray-700">
+            <Icon name="mail" class="w-6 h-6" />
+            <div class="absolute top-0 right-0 w-1 h-1 -mt-1 -mr-1 bg-red-600 rounded-full" />
+          </div>
+          <button
+            type="button"
+            class="flex items-center px-4 py-2 space-x-1 font-medium text-white rounded-lg bg-gradient-to-r from-pink-600 to-yellow-500"
+          >
+            <Icon name="plus-circle" class="w-6 h-6" />
+            <span>Add photo</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
