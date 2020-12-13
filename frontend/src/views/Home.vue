@@ -76,6 +76,7 @@
     </div>
 
     <div class="container max-w-3xl col-span-3 mx-auto my-12">
+      <!-- HEADER SECTION -->
       <div class="flex items-center justify-between">
         <!-- SEARCH INPUT FIELD -->
         <div class="flex items-center w-56 p-2 space-x-2 rounded-lg bg-gray-50">
@@ -87,7 +88,7 @@
           >
         </div>
 
-        <!-- HEADER RIGHT SECTION -->
+        <!-- RIGHT SECTION -->
         <div class="flex items-center space-x-6">
           <div class="relative text-gray-600">
             <Icon name="bell" class="w-5 h-5" />
@@ -104,6 +105,21 @@
             <Icon name="plus-circle" class="w-6 h-6" />
             <span>Add photo</span>
           </button>
+        </div>
+      </div>
+
+      <!-- STORIES SECTION -->
+      <div class="mt-10">
+        <h1 class="text-3xl font-bold text-gray-800">Stories</h1>
+        <div class="flex items-center mt-6 space-x-4">
+          <Avatar noActiveStories>
+            <div class="absolute inset-0 flex items-center justify-center w-full h-full bg-blue-600 bg-opacity-50 rounded-full">
+              <Icon name="plus" class="w-6 h-6 text-white" />
+            </div>
+          </Avatar>
+          <Avatar />
+          <Avatar />
+          <Avatar />
         </div>
       </div>
     </div>
