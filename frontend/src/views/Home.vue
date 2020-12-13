@@ -143,11 +143,11 @@
               <div class="flex items-center space-x-3 text-gray-700">
                 <div class="flex items-center space-x-1">
                   <Icon name="heart" class="w-5 h-5" />
-                  <span>5.2k</span>
+                  <span class="text-sm">5.2k</span>
                 </div>
                 <div class="flex items-center space-x-1">
                   <Icon name="chat" class="w-5 h-5" />
-                  <span>38</span>
+                  <span class="text-sm">38</span>
                 </div>
               </div>
             </div>
