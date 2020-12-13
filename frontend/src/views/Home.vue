@@ -110,7 +110,13 @@
 
       <!-- STORIES SECTION -->
       <div class="mt-10">
-        <h1 class="text-3xl font-bold text-gray-800">Stories</h1>
+        <div class="flex items-center justify-between">
+          <h1 class="text-3xl font-bold text-gray-800">Stories</h1>
+          <div class="flex items-center space-x-3">
+            <Icon name="play" class="w-6 h-6 text-gray-300" />
+            <p class="text-gray-800">Watch all</p>
+          </div>
+        </div>
         <div class="flex items-center mt-6 space-x-4">
           <Avatar noActiveStories>
             <div class="absolute inset-0 flex items-center justify-center w-full h-full bg-blue-600 bg-opacity-50 rounded-full">
@@ -121,6 +127,12 @@
           <Avatar />
           <Avatar />
         </div>
+      </div>
+
+      <!-- FEED SECTION -->
+      <div class="mt-10">
+        <h1 class="text-3xl font-bold text-gray-800">Feed</h1>
+        <div></div>
       </div>
     </div>
   </div>
