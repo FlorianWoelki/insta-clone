@@ -125,7 +125,7 @@
           </Avatar>
           <Avatar />
           <Avatar />
-          <Avatar />
+          <Avatar noActiveStories />
         </div>
       </div>
 
