@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <div class="container max-w-3xl col-span-3 mx-auto my-12">
+    <div class="container col-span-3 px-16 mx-auto my-12">
       <!-- HEADER SECTION -->
       <div class="flex items-center justify-between">
         <!-- SEARCH INPUT FIELD -->
@@ -134,7 +134,7 @@
         <h1 class="text-3xl font-bold text-gray-800">Feed</h1>
         <div class="grid grid-cols-3 gap-6 mt-6">
           <div class="space-y-2">
-            <img class="rounded-2xl" src="https://placekitten.com/300/300" alt="feed-image">
+            <img class="w-full rounded-2xl" src="https://placekitten.com/300/300" alt="feed-image">
             <div class="flex items-center justify-between">
               <div class="flex items-center space-x-2">
                 <Avatar :imageSize="6" />
