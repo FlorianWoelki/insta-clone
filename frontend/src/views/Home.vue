@@ -1,6 +1,6 @@
 <template>
-  <div class="grid h-screen grid-cols-4">
-    <div class="py-8 bg-gray-100">
+  <div class="grid h-screen grid-cols-4 xl:grid-cols-7 2xl:grid-cols-5">
+    <div class="py-8 bg-gray-100 xl:col-span-2 2xl:col-span-1">
       <!-- PROFILE HEADER -->
       <div class="px-8 space-y-3">
         <Avatar />
@@ -75,7 +75,7 @@
       </div>
     </div>
 
-    <div class="container col-span-3 px-16 mx-auto my-12">
+    <div class="container col-span-3 px-16 mx-auto my-12 xl:col-span-5 2xl:col-span-4">
       <!-- HEADER SECTION -->
       <div class="flex items-center justify-between">
         <!-- SEARCH INPUT FIELD -->
