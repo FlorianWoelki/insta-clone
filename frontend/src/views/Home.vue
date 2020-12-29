@@ -79,7 +79,7 @@
       <!-- HEADER SECTION -->
       <div class="flex items-center justify-between">
         <!-- SEARCH INPUT FIELD -->
-        <div class="flex items-center w-56 p-2 space-x-2 rounded-lg bg-gray-50">
+        <div class="flex items-center w-full max-w-xs p-2 space-x-2 rounded-lg bg-gray-50 2xl:max-w-lg">
           <Icon name="search" class="w-6 h-6 my-auto text-gray-300" />
           <input
             placeholder="Search"
