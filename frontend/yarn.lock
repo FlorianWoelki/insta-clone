@@ -856,10 +856,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@flowy/vue-auto-import@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@flowy/vue-auto-import/-/vue-auto-import-1.0.0.tgz#e39e6adab3e8c385d3e62d929894e6f1b727b036"
-  integrity sha512-nJfuIi8/3sBFMIc7KqTTrDtZbsgG1C2mrw+yIT+Tl3q8AQCppf3eD/JeSpEHtjB17Ok9aPOGx9Wo6dHB8/swwQ==
+"@flowy/vue-auto-import@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@flowy/vue-auto-import/-/vue-auto-import-1.0.1.tgz#7c24db6e7003e36c1f830150440cc3522d34ffd3"
+  integrity sha512-BVPPsfzNe2ZWWT81O4cvkbKwr13q/71NpwDOqsFceGq5jW48V6NlVd/v2vFPIakuIrJE1KkfYJyaTJZI2Oonog==
   dependencies:
     lodash.camelcase "^4.3.0"
     lodash.upperfirst "^4.3.1"
