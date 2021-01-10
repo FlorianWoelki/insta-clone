@@ -90,14 +90,14 @@
 
         <!-- RIGHT SECTION -->
         <div class="flex items-center space-x-6">
-          <div class="relative text-gray-600">
+          <a href="#" class="relative text-gray-600">
             <Icon name="bell" class="w-5 h-5" />
             <div class="absolute top-0 right-0 w-1 h-1 -mt-1 -mr-1 bg-red-600 rounded-full" />
-          </div>
-          <div class="relative text-gray-600">
+          </a>
+          <a href="#" class="relative text-gray-600">
             <Icon name="mail" class="w-5 h-5" />
             <div class="absolute top-0 right-0 w-1 h-1 -mt-1 -mr-1 bg-red-600 rounded-full" />
-          </div>
+          </a>
           <Button>
             <Icon name="plus-circle" class="w-6 h-6" />
             <span>Add photo</span>
