@@ -98,13 +98,10 @@
             <Icon name="mail" class="w-5 h-5" />
             <div class="absolute top-0 right-0 w-1 h-1 -mt-1 -mr-1 bg-red-600 rounded-full" />
           </div>
-          <button
-            type="button"
-            class="flex items-center px-4 py-2 space-x-1 font-medium text-white rounded-lg bg-gradient-to-r from-pink-600 to-yellow-500"
-          >
+          <Button>
             <Icon name="plus-circle" class="w-6 h-6" />
             <span>Add photo</span>
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -161,11 +158,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Icon from '@/components/ui/Icon.vue';
+import Button from '@/components/ui/Button.vue';
 import Avatar from '@/components/Avatar.vue';
 
 export default defineComponent({
   components: {
     Icon,
+    Button,
     Avatar,
   },
 });
