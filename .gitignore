@@ -11,7 +11,11 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
+# For hot reloading with air
+air-tmp
+
 # Dependency directories
 vendor/
 
 .env
+bin
