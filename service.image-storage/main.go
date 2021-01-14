@@ -26,7 +26,7 @@ func main() {
 		godotenv.Load("../.env")
 	}
 
-	logger := log.New(os.Stdout, "image-storage", log.LstdFlags)
+	logger := log.New(os.Stdout, "image-storage ", log.LstdFlags)
 
 	// create the storage class, use local storage
 	// max filesize 5MB
