@@ -36,15 +36,15 @@ func main() {
 		os.Exit(1)
 	}
 
-	// create the handlers
+	// create handlers and middleware
 	fileHandler := handlers.NewFiles(storage, logger)
 	gzipMiddleware := handlers.GzipHandler{}
+	corsHandler := gohandlers.CORS(gohandlers.AllowedOrigins([]string{"*"}))
 
 	// create gorilla mux router with CORS
 	router := mux.NewRouter()
 
-	corsHandler := gohandlers.CORS(gohandlers.AllowedOrigins([]string{"*"}))
-
+	// post files with multipart request functionality
 	postHandler := router.Methods(http.MethodPost).Subrouter()
 	postHandler.HandleFunc("/images/{id:[0-9]+}/{filename:[a-zA-Z]+\\.[a-z]{3}}", fileHandler.UploadRest)
 	postHandler.HandleFunc("/", fileHandler.UploadMultipart)

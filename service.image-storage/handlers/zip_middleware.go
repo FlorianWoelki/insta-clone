@@ -13,6 +13,7 @@ type GzipHandler struct {
 // GzipMiddleware is a http middleware for handling gzip compression
 func (g *GzipHandler) GzipMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+		// check if given compression algorithm in the header is gzip
 		if strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
 			// create a gziped response
 			wrw := NewWrappedResponseWriter(rw)
