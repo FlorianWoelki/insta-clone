@@ -41,4 +41,4 @@ Go based image service supporting Gzipped content, multi-part forms and a RESTfu
 
 ### Frontend ([frontend](https://github.com/FlorianWoelki/insta-clone/tree/master/frontend))
 
-Vue.js webapp that represents a refresh Instagram UI presenting different information from the services.
+Vue.js webapp that represents a refresh Instagram UI presenting different information from the services (Design was inspired by [Overlap Studio](https://dribbble.com/shots/6580622-Instagram-Redesign-Concept-Desktop-ver)).
