@@ -1,6 +1,6 @@
 <template>
   <div class="grid h-screen grid-cols-4 xl:grid-cols-7 2xl:grid-cols-5">
-    <div class="py-8 bg-gray-100 xl:col-span-2 2xl:col-span-1">
+    <Sidebar>
       <!-- PROFILE HEADER -->
       <div class="px-8 space-y-3">
         <Avatar />
@@ -27,39 +27,39 @@
       </div>
 
       <!-- SIDEBAR ITEMS -->
-      <div class="space-y-5">
-        <div class="flex items-center pl-12 space-x-6 text-pink-600 border-r-2 border-pink-600">
+      <template #sidebarItems>
+        <SidebarItem :itemId="0">
           <Icon name="template" class="w-5 h-5" />
           <p class="font-semibold">Feed</p>
-        </div>
-        <div class="flex items-center pl-12 space-x-6 text-gray-600">
+        </SidebarItem>
+        <SidebarItem :itemId="1">
           <Icon name="search" class="w-5 h-5" />
           <p>Explore</p>
-        </div>
-        <div class="flex items-center pl-12 space-x-6 text-gray-600">
+        </SidebarItem>
+        <SidebarItem :itemId="2">
           <div class="flex items-center space-x-6">
             <Icon name="bell" class="w-5 h-5" />
             <p>Notifications</p>
           </div>
           <span class="text-sm text-gray-400">2</span>
-        </div>
-        <div class="flex items-center pl-12 space-x-6 text-gray-600">
+        </SidebarItem>
+        <SidebarItem :itemId="3">
           <Icon name="mail" class="w-5 h-5" />
           <p>Messages</p>
           <span class="text-sm text-gray-400">8</span>
-        </div>
-        <div class="flex items-center pl-12 space-x-6 text-gray-600">
+        </SidebarItem>
+        <SidebarItem :itemId="4">
           <Icon name="paper-airplane" class="w-5 h-5" />
           <p>Direct</p>
-        </div>
-        <div class="flex items-center pl-12 space-x-6 text-gray-600">
+        </SidebarItem>
+        <SidebarItem :itemId="5">
           <Icon name="chart-bar" class="w-5 h-5" />
           <p>Stats</p>
-        </div>
-        <div class="flex items-center pl-12 space-x-6 text-gray-600">
+        </SidebarItem>
+        <SidebarItem :itemId="6">
           <Icon name="cog" class="w-5 h-5" />
           <p>Settings</p>
-        </div>
+        </SidebarItem>
 
         <div class="flex items-center">
           <div class="flex-grow bg-gray-200 border"></div>
@@ -72,8 +72,8 @@
           <Icon name="logout" class="w-5 h-5" />
           <p>Logout</p>
         </div>
-      </div>
-    </div>
+      </template>
+    </Sidebar>
 
     <div class="container col-span-3 px-16 mx-auto my-12 xl:col-span-5 2xl:col-span-4">
       <!-- HEADER SECTION -->
@@ -151,6 +151,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Avatar from '@/components/Avatar.vue';
+import Sidebar from '@/components/sidebar/Sidebar.vue';
+import SidebarItem from '@/components/sidebar/SidebarItem.vue';
 import Icon from '@/components/ui/Icon.vue';
 import Button from '@/components/ui/Button.vue';
 import Search from '@/components/ui/Search.vue';
@@ -160,6 +162,8 @@ export default defineComponent({
     Icon,
     Button,
     Avatar,
+    Sidebar,
+    SidebarItem,
     Search,
   },
 });
