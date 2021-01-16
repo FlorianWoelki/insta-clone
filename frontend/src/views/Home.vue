@@ -147,3 +147,20 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import Avatar from '@/components/Avatar.vue';
+import Icon from '@/components/ui/Icon.vue';
+import Button from '@/components/ui/Button.vue';
+import Search from '@/components/ui/Search.vue';
+
+export default defineComponent({
+  components: {
+    Icon,
+    Button,
+    Avatar,
+    Search,
+  },
+});
+</script>
