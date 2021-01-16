@@ -10,12 +10,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, provide } from 'vue';
+import { SidebarSharedState } from '@/models/SidebarSharedState';
 
 export default defineComponent({
   setup() {
     const sharedState = ref({
       activeItem: 0,
-    });
+    } as SidebarSharedState);
     provide('sharedState', sharedState);
 
     return {

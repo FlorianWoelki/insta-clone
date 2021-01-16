@@ -30,7 +30,7 @@
       <template #sidebarItems>
         <SidebarItem :itemId="0">
           <Icon name="template" class="w-5 h-5" />
-          <p class="font-semibold">Feed</p>
+          <p>Feed</p>
         </SidebarItem>
         <SidebarItem :itemId="1">
           <Icon name="search" class="w-5 h-5" />
