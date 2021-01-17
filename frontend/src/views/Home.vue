@@ -123,25 +123,11 @@
       <div class="mt-10">
         <h1 class="text-3xl font-bold text-gray-800">Feed</h1>
         <div class="grid grid-cols-3 gap-6 mt-6">
-          <div class="space-y-2">
-            <img class="w-full cursor-pointer rounded-2xl" src="https://placekitten.com/300/300" alt="feed-image">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-2 cursor-pointer">
-                <Avatar :imageSize="6" />
-                <p class="text-sm font-bold text-gray-800">Dom_Hill</p>
-              </div>
-              <div class="flex items-center space-x-3 text-gray-700">
-                <div class="flex items-center space-x-1 cursor-pointer">
-                  <Icon name="heart" class="w-5 h-5" />
-                  <span class="text-sm">5.2k</span>
-                </div>
-                <div class="flex items-center space-x-1 cursor-pointer">
-                  <Icon name="chat" class="w-5 h-5" />
-                  <span class="text-sm">38</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
         </div>
       </div>
     </div>
@@ -156,6 +142,7 @@ import SidebarItem from '@/components/sidebar/SidebarItem.vue';
 import Icon from '@/components/ui/Icon.vue';
 import Button from '@/components/ui/Button.vue';
 import Search from '@/components/ui/Search.vue';
+import Post from '@/components/Post.vue';
 
 export default defineComponent({
   components: {
@@ -165,6 +152,7 @@ export default defineComponent({
     Sidebar,
     SidebarItem,
     Search,
+    Post,
   },
 });
 </script>
