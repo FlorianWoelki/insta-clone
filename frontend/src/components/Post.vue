@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Icon from './ui/Icon.vue';
+import { Icon } from './ui';
 import Avatar from './Avatar.vue';
 
 export default defineComponent({

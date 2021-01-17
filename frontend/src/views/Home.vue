@@ -137,12 +137,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Avatar from '@/components/Avatar.vue';
-import Sidebar from '@/components/sidebar/Sidebar.vue';
-import SidebarItem from '@/components/sidebar/SidebarItem.vue';
-import Icon from '@/components/ui/Icon.vue';
-import Button from '@/components/ui/Button.vue';
-import Search from '@/components/ui/Search.vue';
 import Post from '@/components/Post.vue';
+import { Sidebar, SidebarItem } from '@/components/sidebar';
+import { Icon, Button, Search } from '@/components/ui';
 
 export default defineComponent({
   components: {
