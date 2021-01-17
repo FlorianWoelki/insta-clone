@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center pl-12 space-x-6"
+    class="flex items-center pl-12 space-x-6 cursor-pointer"
     :class="{
       'text-pink-600 border-pink-600 border-r-2 font-semibold': isActive,
       'text-gray-600': !isActive,
