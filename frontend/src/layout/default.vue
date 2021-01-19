@@ -28,35 +28,35 @@
 
       <!-- SIDEBAR ITEMS -->
       <template #sidebarItems>
-        <SidebarItem :itemId="0">
+        <SidebarItem :itemId="0" @click="$router.push('/')">
           <Icon name="template" class="w-5 h-5" />
           <p>Feed</p>
         </SidebarItem>
-        <SidebarItem :itemId="1">
+        <SidebarItem :itemId="1" @click="$router.push('explore')">
           <Icon name="search" class="w-5 h-5" />
           <p>Explore</p>
         </SidebarItem>
-        <SidebarItem :itemId="2">
+        <SidebarItem :itemId="2" @click="$router.push('notifications')">
           <div class="flex items-center space-x-6">
             <Icon name="bell" class="w-5 h-5" />
             <p>Notifications</p>
           </div>
           <span class="text-sm text-gray-400">2</span>
         </SidebarItem>
-        <SidebarItem :itemId="3">
+        <SidebarItem :itemId="3" @click="$router.push('messages')">
           <Icon name="mail" class="w-5 h-5" />
           <p>Messages</p>
           <span class="text-sm text-gray-400">8</span>
         </SidebarItem>
-        <SidebarItem :itemId="4">
+        <SidebarItem :itemId="4" @click="$router.push('direct')">
           <Icon name="paper-airplane" class="w-5 h-5" />
           <p>Direct</p>
         </SidebarItem>
-        <SidebarItem :itemId="5">
+        <SidebarItem :itemId="5" @click="$router.push('stats')">
           <Icon name="chart-bar" class="w-5 h-5" />
           <p>Stats</p>
         </SidebarItem>
-        <SidebarItem :itemId="6">
+        <SidebarItem :itemId="6" @click="$router.push('settings')">
           <Icon name="cog" class="w-5 h-5" />
           <p>Settings</p>
         </SidebarItem>

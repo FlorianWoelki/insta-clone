@@ -24,12 +24,13 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const sharedState = ref(inject('sharedState') as SidebarSharedState);
     const isActive = computed(() => sharedState.value.activeItem === props.itemId);
 
     const toggle = () => {
       sharedState.value.activeItem = props.itemId;
+      emit('click');
     };
 
     return {
