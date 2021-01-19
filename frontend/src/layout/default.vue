@@ -1,6 +1,6 @@
 <template>
   <div class="grid h-screen grid-cols-4 xl:grid-cols-7 2xl:grid-cols-5">
-    <Sidebar>
+    <Sidebar :activeItem="activeItem">
       <!-- PROFILE HEADER -->
       <div class="px-8 space-y-3">
         <Avatar />
@@ -93,6 +93,12 @@ export default defineComponent({
     SidebarItem,
     Icon,
     Avatar,
+  },
+  props: {
+    activeItem: {
+      type: Number,
+      required: true,
+    },
   },
 });
 </script>

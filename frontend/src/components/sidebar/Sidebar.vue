@@ -13,9 +13,15 @@ import { defineComponent, ref, provide } from 'vue';
 import { SidebarSharedState } from '@/models/SidebarSharedState';
 
 export default defineComponent({
-  setup() {
+  props: {
+    activeItem: {
+      type: Number,
+      required: true,
+    },
+  },
+  setup(props) {
     const sharedState = ref({
-      activeItem: 0,
+      activeItem: props.activeItem,
     } as SidebarSharedState);
     provide('sharedState', sharedState);
 

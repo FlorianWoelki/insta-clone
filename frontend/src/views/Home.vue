@@ -1,5 +1,5 @@
 <template>
-  <DefaultLayout>
+  <DefaultLayout :activeItem="0">
     <!-- HEADER SECTION -->
     <div class="flex items-center justify-between">
       <!-- SEARCH INPUT FIELD -->

@@ -1,5 +1,5 @@
 <template>
-  <DefaultLayout>
+  <DefaultLayout :activeItem="1">
     <h1>Explore</h1>
   </DefaultLayout>
 </template>
