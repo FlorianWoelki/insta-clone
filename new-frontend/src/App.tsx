@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import Avatar from './components/Avatar';
 import Icon from './components/Icon';
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-2xl">Hello World</h1>
-      <Icon name="bell" className="w-6 h-6"></Icon>
+      <Avatar>
+        <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-blue-600 bg-opacity-50 rounded-full">
+          <Icon name="plus" className="w-6 h-6 text-white" />
+        </div>
+      </Avatar>
+      <Avatar></Avatar>
     </div>
   );
 }
