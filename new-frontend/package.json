@@ -18,6 +18,7 @@
     "postcss": "^8.2.10",
     "tailwindcss": "^2.1.1",
     "typescript": "^4.1.2",
-    "vite": "^2.1.5"
+    "vite": "^2.1.5",
+    "vite-plugin-react-svg": "^0.2.0"
   }
 }
