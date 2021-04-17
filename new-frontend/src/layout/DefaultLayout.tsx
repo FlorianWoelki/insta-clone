@@ -12,37 +12,55 @@ type SidebarItemsProps = {
 const SidebarItems: FunctionComponent<SidebarItemsProps> = ({
   setActiveItem,
 }): JSX.Element => {
+  const items: {
+    name: string;
+    icon: string;
+    additionalContent?: JSX.Element;
+  }[] = [
+    {
+      name: 'Feed',
+      icon: 'template',
+    },
+    {
+      name: 'Explore',
+      icon: 'search',
+    },
+    {
+      name: 'Notifications',
+      icon: 'bell',
+    },
+    {
+      name: 'Messages',
+      icon: 'mail',
+      additionalContent: <span className="text-sm text-gray-400">8</span>,
+    },
+    {
+      name: 'Direct',
+      icon: 'paper-airplane',
+    },
+    {
+      name: 'Stats',
+      icon: 'chart-bar',
+    },
+    {
+      name: 'Settings',
+      icon: 'cog',
+    },
+  ];
+
   return (
     <React.Fragment>
-      <SidebarItem itemId={0} setActiveItem={() => setActiveItem(0)}>
-        <Icon name="template" className="w-5 h-5" />
-        <p>Feed</p>
-      </SidebarItem>
-      <SidebarItem itemId={1} setActiveItem={() => setActiveItem(1)}>
-        <Icon name="search" className="w-5 h-5" />
-        <p>Explore</p>
-      </SidebarItem>
-      <SidebarItem itemId={2} setActiveItem={() => setActiveItem(2)}>
-        <Icon name="bell" className="w-5 h-5" />
-        <p>Notifications</p>
-      </SidebarItem>
-      <SidebarItem itemId={3} setActiveItem={() => setActiveItem(3)}>
-        <Icon name="mail" className="w-5 h-5" />
-        <p>Messages</p>
-        <span className="text-sm text-gray-400">8</span>
-      </SidebarItem>
-      <SidebarItem itemId={4} setActiveItem={() => setActiveItem(4)}>
-        <Icon name="paper-airplane" className="w-5 h-5" />
-        <p>Direct</p>
-      </SidebarItem>
-      <SidebarItem itemId={5} setActiveItem={() => setActiveItem(5)}>
-        <Icon name="chart-bar" className="w-5 h-5" />
-        <p>Stats</p>
-      </SidebarItem>
-      <SidebarItem itemId={6} setActiveItem={() => setActiveItem(6)}>
-        <Icon name="cog" className="w-5 h-5" />
-        <p>Settings</p>
-      </SidebarItem>
+      {items.map((item, index) => (
+        <SidebarItem
+          key={index}
+          itemId={index}
+          setActiveItem={() => setActiveItem(index)}
+        >
+          <Icon name={item.icon} className="w-5 h-5" />
+          <p>{item.name}</p>
+          {item.additionalContent}
+        </SidebarItem>
+      ))}
 
       <div className="flex items-center">
         <div className="flex-grow bg-gray-200 border"></div>
