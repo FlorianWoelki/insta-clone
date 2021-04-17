@@ -8,7 +8,7 @@ import DefaultLayout from '../layout/DefaultLayout';
 
 const Home = (): JSX.Element => {
   return (
-    <DefaultLayout>
+    <DefaultLayout defaultActiveItem={0}>
       <div className="flex items-center justify-between">
         <Search />
 

@@ -5,8 +5,6 @@ import Sidebar from '../components/sidebar/Sidebar';
 import SidebarContext from '../components/sidebar/SidebarContext';
 import SidebarItem from '../components/sidebar/SidebarItem';
 
-type DefaultLayoutProps = {};
-
 type SidebarItemsProps = {
   setActiveItem: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -61,10 +59,14 @@ const SidebarItems: FunctionComponent<SidebarItemsProps> = ({
   );
 };
 
+type DefaultLayoutProps = {
+  defaultActiveItem: number;
+};
+
 const DefaultLayout: FunctionComponent<DefaultLayoutProps> = (
   props,
 ): JSX.Element => {
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(props.defaultActiveItem);
 
   return (
     <div className="grid h-screen grid-cols-4 xl:grid-cols-7 2xl:grid-cols-5">
