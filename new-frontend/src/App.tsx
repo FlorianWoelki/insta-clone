@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import Avatar from './components/Avatar';
-import Icon from './components/Icon';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Home from './views/Home';
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Router>
+      <div className="App">
+        <Home />
+      </div>
+    </Router>
   );
 }
 
