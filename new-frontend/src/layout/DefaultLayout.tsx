@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import { useHistory } from 'react-router';
 import Avatar from '../components/Avatar';
 import Icon from '../components/Icon';
 import Sidebar from '../components/sidebar/Sidebar';
@@ -12,39 +13,49 @@ type SidebarItemsProps = {
 const SidebarItems: FunctionComponent<SidebarItemsProps> = ({
   setActiveItem,
 }): JSX.Element => {
+  const history = useHistory();
+
   const items: {
     name: string;
     icon: string;
+    path: string;
     additionalContent?: JSX.Element;
   }[] = [
     {
       name: 'Feed',
       icon: 'template',
+      path: '',
     },
     {
       name: 'Explore',
       icon: 'search',
+      path: 'explore',
     },
     {
       name: 'Notifications',
       icon: 'bell',
+      path: 'notifications',
     },
     {
       name: 'Messages',
       icon: 'mail',
       additionalContent: <span className="text-sm text-gray-400">8</span>,
+      path: 'messages',
     },
     {
       name: 'Direct',
       icon: 'paper-airplane',
+      path: 'direct',
     },
     {
       name: 'Stats',
       icon: 'chart-bar',
+      path: 'stats',
     },
     {
       name: 'Settings',
       icon: 'cog',
+      path: 'settings',
     },
   ];
 
@@ -54,7 +65,10 @@ const SidebarItems: FunctionComponent<SidebarItemsProps> = ({
         <SidebarItem
           key={index}
           itemId={index}
-          setActiveItem={() => setActiveItem(index)}
+          setActiveItem={() => {
+            setActiveItem(index);
+            history.push(`/${item.path}`);
+          }}
         >
           <Icon name={item.icon} className="w-5 h-5" />
           <p>{item.name}</p>
