@@ -21,12 +21,12 @@ $ yarn
 Start the frontend:
 
 ```bash
-$ npm run serve
+$ npm run dev
 # or
-$ yarn serve
+$ yarn dev
 ```
 
-The project should be located on `http://localhost:8080`.
+The project should be located on `http://localhost:3000`.
 
 Setup microservices:
 WIP
@@ -44,3 +44,5 @@ Go based image service supporting Gzipped content, multi-part forms and a RESTfu
 ### Frontend ([frontend](https://github.com/FlorianWoelki/insta-clone/tree/master/frontend))
 
 React.js webapp that represents a refresh Instagram UI presenting different information from the services (Design was inspired by [Overlap Studio](https://dribbble.com/shots/6580622-Instagram-Redesign-Concept-Desktop-ver)).
+
+This project uses [Vite](http://vitejs.dev/) for a fast bundling and a better development experience.
