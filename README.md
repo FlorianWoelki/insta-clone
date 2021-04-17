@@ -9,6 +9,7 @@ This project and readme file is still in progress.
 Feel free to check out the project and modify it on your own needs:
 
 Setup frontend:
+
 ```bash
 $ git clone https://github.com/FlorianWoelki/insta-clone.git
 $ cd insta-clone/frontend
@@ -18,6 +19,7 @@ $ yarn
 ```
 
 Start the frontend:
+
 ```bash
 $ npm run serve
 # or
@@ -41,4 +43,4 @@ Go based image service supporting Gzipped content, multi-part forms and a RESTfu
 
 ### Frontend ([frontend](https://github.com/FlorianWoelki/insta-clone/tree/master/frontend))
 
-Vue.js webapp that represents a refresh Instagram UI presenting different information from the services (Design was inspired by [Overlap Studio](https://dribbble.com/shots/6580622-Instagram-Redesign-Concept-Desktop-ver)).
+React.js webapp that represents a refresh Instagram UI presenting different information from the services (Design was inspired by [Overlap Studio](https://dribbble.com/shots/6580622-Instagram-Redesign-Concept-Desktop-ver)).
