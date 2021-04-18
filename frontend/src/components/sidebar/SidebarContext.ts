@@ -1,4 +1,4 @@
-import { Context, createContext, FunctionComponent } from 'react';
+import { Context, createContext } from 'react';
 
 type SidebarContextType = {
   activeItem: number;

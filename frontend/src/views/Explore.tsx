@@ -1,12 +1,7 @@
 import React from 'react';
-import DefaultLayout from '../layout/DefaultLayout';
 
 const Explore = (): JSX.Element => {
-  return (
-    <DefaultLayout defaultActiveItem={1}>
-      <div>Hello Explore</div>
-    </DefaultLayout>
-  );
+  return <div>Hello Explore</div>;
 };
 
 export default Explore;

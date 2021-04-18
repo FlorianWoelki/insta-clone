@@ -68,8 +68,7 @@ const SidebarItems: FunctionComponent<SidebarItemsProps> = ({
           setActiveItem={() => {
             setActiveItem(index);
             history.push(`/${item.path}`);
-          }}
-        >
+          }}>
           <Icon name={item.icon} className="w-5 h-5" />
           <p>{item.name}</p>
           {item.additionalContent}
@@ -96,7 +95,7 @@ type DefaultLayoutProps = {
 };
 
 const DefaultLayout: FunctionComponent<DefaultLayoutProps> = (
-  props,
+  props
 ): JSX.Element => {
   const [activeItem, setActiveItem] = useState(props.defaultActiveItem);
 

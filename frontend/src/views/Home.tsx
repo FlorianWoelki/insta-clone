@@ -4,11 +4,10 @@ import Button from '../components/Button';
 import Icon from '../components/Icon';
 import Post from '../components/Post';
 import Search from '../components/Search';
-import DefaultLayout from '../layout/DefaultLayout';
 
 const Home = (): JSX.Element => {
   return (
-    <DefaultLayout defaultActiveItem={0}>
+    <React.Fragment>
       <div className="flex items-center justify-between">
         <Search />
 
@@ -58,7 +57,7 @@ const Home = (): JSX.Element => {
           <Post />
         </div>
       </div>
-    </DefaultLayout>
+    </React.Fragment>
   );
 };
 

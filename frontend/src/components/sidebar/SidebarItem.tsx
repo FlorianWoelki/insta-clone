@@ -7,7 +7,7 @@ type SidebarItemProps = {
 };
 
 const SidebarItem: FunctionComponent<SidebarItemProps> = (
-  props,
+  props
 ): JSX.Element => {
   const toggle = (): void => {
     props.setActiveItem(props.itemId);
@@ -26,8 +26,7 @@ const SidebarItem: FunctionComponent<SidebarItemProps> = (
                   : 'text-gray-600'
               }`
             }
-            onClick={toggle}
-          >
+            onClick={toggle}>
             {props.children}
           </div>
         );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import DefaultLayout from './layout/DefaultLayout';
 import Direct from './views/Direct';
 import Explore from './views/Explore';
 import Home from './views/Home';
@@ -11,7 +12,7 @@ import Stats from './views/Stats';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <DefaultLayout defaultActiveItem={0}>
         <Switch>
           <Route exact path="/">
             <Home />
@@ -35,7 +36,7 @@ function App() {
             <Stats></Stats>
           </Route>
         </Switch>
-      </div>
+      </DefaultLayout>
     </Router>
   );
 }
