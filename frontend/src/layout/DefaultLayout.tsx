@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState } from 'react';
-import { useHistory } from 'react-router';
+import React, { useState } from 'react';
+import { useHistory, useLocation } from 'react-router';
 import Avatar from '../components/Avatar';
 import Icon from '../components/Icon';
 import Sidebar from '../components/sidebar/Sidebar';
@@ -10,54 +10,54 @@ type SidebarItemsProps = {
   setActiveItem: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const SidebarItems: FunctionComponent<SidebarItemsProps> = ({
+const items: {
+  name: string;
+  icon: string;
+  path: string;
+  additionalContent?: JSX.Element;
+}[] = [
+  {
+    name: 'Feed',
+    icon: 'template',
+    path: '',
+  },
+  {
+    name: 'Explore',
+    icon: 'search',
+    path: 'explore',
+  },
+  {
+    name: 'Notifications',
+    icon: 'bell',
+    path: 'notifications',
+  },
+  {
+    name: 'Messages',
+    icon: 'mail',
+    additionalContent: <span className="text-sm text-gray-400">8</span>,
+    path: 'messages',
+  },
+  {
+    name: 'Direct',
+    icon: 'paper-airplane',
+    path: 'direct',
+  },
+  {
+    name: 'Stats',
+    icon: 'chart-bar',
+    path: 'stats',
+  },
+  {
+    name: 'Settings',
+    icon: 'cog',
+    path: 'settings',
+  },
+];
+
+const SidebarItems: React.FC<SidebarItemsProps> = ({
   setActiveItem,
 }): JSX.Element => {
   const history = useHistory();
-
-  const items: {
-    name: string;
-    icon: string;
-    path: string;
-    additionalContent?: JSX.Element;
-  }[] = [
-    {
-      name: 'Feed',
-      icon: 'template',
-      path: '',
-    },
-    {
-      name: 'Explore',
-      icon: 'search',
-      path: 'explore',
-    },
-    {
-      name: 'Notifications',
-      icon: 'bell',
-      path: 'notifications',
-    },
-    {
-      name: 'Messages',
-      icon: 'mail',
-      additionalContent: <span className="text-sm text-gray-400">8</span>,
-      path: 'messages',
-    },
-    {
-      name: 'Direct',
-      icon: 'paper-airplane',
-      path: 'direct',
-    },
-    {
-      name: 'Stats',
-      icon: 'chart-bar',
-      path: 'stats',
-    },
-    {
-      name: 'Settings',
-      icon: 'cog',
-      path: 'settings',
-    },
-  ];
 
   return (
     <React.Fragment>
@@ -90,14 +90,13 @@ const SidebarItems: FunctionComponent<SidebarItemsProps> = ({
   );
 };
 
-type DefaultLayoutProps = {
-  defaultActiveItem: number;
-};
+const DefaultLayout: React.FC = (props): JSX.Element => {
+  const currentPathname = useLocation().pathname.slice(1);
+  const activeRouteIndex = items.findIndex(
+    (item) => item.path === currentPathname
+  );
 
-const DefaultLayout: FunctionComponent<DefaultLayoutProps> = (
-  props
-): JSX.Element => {
-  const [activeItem, setActiveItem] = useState(props.defaultActiveItem);
+  const [activeItem, setActiveItem] = useState(activeRouteIndex);
 
   return (
     <div className="grid h-screen grid-cols-4 xl:grid-cols-7 2xl:grid-cols-5">

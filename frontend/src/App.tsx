@@ -12,7 +12,7 @@ import Stats from './views/Stats';
 function App() {
   return (
     <Router>
-      <DefaultLayout defaultActiveItem={0}>
+      <DefaultLayout>
         <Switch>
           <Route exact path="/">
             <Home />
