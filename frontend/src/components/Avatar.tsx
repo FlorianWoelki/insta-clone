@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-type AvatarProps = {
+export type AvatarProps = {
   imageSize?: Number;
   noActiveStories?: boolean;
 };
