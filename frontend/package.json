@@ -25,6 +25,7 @@
     "@storybook/addon-links": "^6.2.8",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^6.2.8",
+    "@svgr/webpack": "^5.5.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.16",
