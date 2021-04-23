@@ -6,4 +6,8 @@ export default {
   component: Post,
 };
 
-export const Default = () => <Post></Post>;
+export const Default = () => (
+  <div className="max-w-md">
+    <Post></Post>
+  </div>
+);
