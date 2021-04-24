@@ -6,7 +6,7 @@ interface SearchProps {
   onInput?: (event: SyntheticEvent) => void;
 }
 
-const Search: React.FC<SearchProps> = ({ onInput, value }): JSX.Element => {
+const Search: React.FC<SearchProps> = (props): JSX.Element => {
   return (
     <div className="relative w-full max-w-xs 2xl:max-w-lg">
       <Icon
@@ -17,8 +17,7 @@ const Search: React.FC<SearchProps> = ({ onInput, value }): JSX.Element => {
         placeholder="Search"
         type="text"
         className="w-full py-2 pl-10 pr-4 text-sm text-gray-700 placeholder-gray-300 transition duration-300 ease-in-out bg-gray-100 rounded-lg focus:outline-none focus:shadow-md"
-        value={value}
-        onInput={onInput}
+        {...props}
       />
     </div>
   );
