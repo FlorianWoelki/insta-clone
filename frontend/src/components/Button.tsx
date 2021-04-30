@@ -12,7 +12,8 @@ const Button: React.FC<ButtonProps> = ({
   const colorClasses = {
     primary:
       'text-white bg-gradient-to-r from-pink-600 to-yellow-500 hover:from-pink-800 hover:to-yellow-700',
-    secondary: 'text-pink-600 border border-pink-600',
+    secondary:
+      'text-pink-600 border border-pink-600 hover:text-white bg-gradient-to-r hover:from-pink-600 hover:to-yellow-500',
   };
 
   return (
